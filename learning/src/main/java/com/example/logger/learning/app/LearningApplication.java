@@ -1,9 +1,12 @@
-package com.example.logger.learning;
+package com.example.logger.learning.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.context.annotation.ComponentScan;
+
 @SpringBootApplication
+@ComponentScan(basePackages = "com.example.logger.learning")
 public class LearningApplication {
 
 	public static void main(String[] args) {
