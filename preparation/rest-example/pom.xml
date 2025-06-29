@@ -7,17 +7,16 @@
     <parent>
         <groupId>com.preparation</groupId>
         <artifactId>learning-spring</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     
     <groupId>com.example</groupId>
     <artifactId>rest-example</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>lambda</groupId>
-            <artifactId>lambda-java-runtime-interface-client</artifactId>   
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -36,12 +35,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
     <properties>
-        <lambook.version>1.18.32</lombok.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
+</project>
