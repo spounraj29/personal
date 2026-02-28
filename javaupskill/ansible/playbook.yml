@@ -1,0 +1,26 @@
+---
+- name: Build and scan Java project
+  hosts: localhost
+  gather_facts: false
+  vars:
+    project_dir: "{{ playbook_dir }}/.."
+  tasks:
+    - name: Run Maven build (skip tests if desired)
+      command: mvn clean verify -DskipTests=false
+      args:
+        chdir: "{{ project_dir }}"
+
+    - name: Execute SonarQube analysis
+      command: mvn sonar:sonar
+      args:
+        chdir: "{{ project_dir }}"
+
+    - name: Trigger Black Duck scan (requires CLI installed)
+      command: "blackduck scan --detect.source.path={{ project_dir }}"
+      args:
+        chdir: "{{ project_dir }}"
+      ignore_errors: yes
+
+    - name: Run Checkmarx scan (placeholder)
+      debug:
+        msg: "Checkmarx scan should be integrated via corporate tooling or Jenkins plugin."

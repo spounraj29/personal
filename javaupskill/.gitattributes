@@ -1,0 +1,12 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+# ensure Java source files use LF and are treated as text
+*.java text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+
+# binaries
+*.jar binary
+*.war binary
+*.class binary

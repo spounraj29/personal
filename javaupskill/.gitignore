@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### local environment overrides ###
+.env/
+
+### ansible artefacts ###
+/ansible/host_vars/
+/ansible/group_vars/
