@@ -25,6 +25,8 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "users")
+// also use MongoDB document so data can be replicated there
+@org.springframework.data.mongodb.core.mapping.Document(collection = "users")
 public class User {
     /**
      * Database primary key; generated automatically.

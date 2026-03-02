@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+spring:
+  thymeleaf:
+    cache: false
+
+actuator:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          dummy:
+            client-id: client-id
+            client-secret: client-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid,profile,email
+        provider:
+          dummy:
+            authorization-uri: https://example.com/oauth2/authorize
+            token-uri: https://example.com/oauth2/token
+            user-info-uri: https://example.com/userinfo
+            jwk-set-uri: https://example.com/.well-known/jwks.json
+
+server:
+  port: 8082

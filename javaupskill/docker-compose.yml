@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: usersdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/usersdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/usersdb
+    depends_on:
+      - mysql
+      - mongodb
+
+  user-client:
+    build:
+      context: ./user-client
+    ports:
+      - "8082:8082"
+    depends_on:
+      - user-service
+
+  monitoring:
+    build:
+      context: ./monitoring
+    ports:
+      - "8083:8083"
+    depends_on:
+      - user-service
+
+volumes:
+  mysql-data:
+  mongo-data:
